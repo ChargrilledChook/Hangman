@@ -2,13 +2,14 @@
 
 # Responsible for loading a dictionary and selecting a random word from it
 class DictLoader
-  attr_reader :dict
-  attr_accessor :word
+  attr_reader :dict, :word
 
   def initialize
     @dict = load_dict
     @word = choose_word(dict).downcase
   end
+
+  private
 
   def load_dict
     dict = []
@@ -27,6 +28,6 @@ class DictLoader
   end
 end
 
-# dictloader = DictLoader.new
-# puts dictloader.dict.sample
-# puts dictloader.word
+dictloader = DictLoader.new
+puts dictloader.dict.sample
+puts dictloader.word
