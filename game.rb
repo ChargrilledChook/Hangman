@@ -1,15 +1,45 @@
 # frozen_string_literal: true
 
+require 'pry'
 # general file until i make class decisions
 class Game
-  attr_reader :dict, :secret_word
-  attr_accessor :guesses, :guess_display
+  attr_reader :dict
+  attr_accessor :guesses, :guess_display, :progress, :wrong_guesses, :player, :secret_word
 
   def initialize
     @dict = DictLoader.new
+    @player = Player.new
     @secret_word = dict.secret_word
     @guesses = 0
     @guess_display = ['.'] * 6
+    @progress = secret_word.split('').map { '_' }
+    @wrong_guesses = []
+  end
+
+  def round
+    %(
+      #{progress.join(' ')}   ||   #{guesses} incorrect guesses.   ||   Incorrect guesses: #{wrong_guesses.join(' ')}
+    )
+  end
+
+  def game_loop
+    print player_prompt
+    guess = player.get_input
+    puts guess
+    progress = compare(guess, secret_word, progress)
+    round
+  end
+
+  def compare(letter, secret_word, player_word)
+    secret_word.split('').each_with_index do |char, idx|
+      if letter == char
+        player_word[idx] = letter
+      else
+        wrong_guesses << letter
+        self.guesses += 1
+      end
+    end
+    player_word
   end
 
   def intro
@@ -18,7 +48,8 @@ class Game
     puts rules_text
     puts game_intro
     puts secret_word
-    print player_prompt
+    puts round
+    
   end
 
   def welcome_string

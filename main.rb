@@ -1,9 +1,10 @@
 require_relative 'dic_loader'
 require_relative 'game'
+require_relative 'player'
 
-dict = DictLoader.new
-puts dict.secret_word
 game = Game.new
 game.intro
-
-pp game.guess_display
+game.game_loop
+puts game.round
+game.game_loop
+puts game.round
