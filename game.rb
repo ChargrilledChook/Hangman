@@ -23,20 +23,27 @@ class Game
   end
 
   def game_loop
-    print player_prompt
-    guess = player.get_input
-    puts guess
-    progress = compare(guess, secret_word, progress)
-    round
+    until guesses == 6
+      print player_prompt
+      guess = player.get_input
+      if match?(guess)
+        self.progress = compare(guess, secret_word, progress)
+      else
+        wrong_guesses << guess
+        self.guesses += 1
+      end
+      puts round
+    end
+  end
+
+  def match?(guess)
+    secret_word.include?(guess)
   end
 
   def compare(letter, secret_word, player_word)
     secret_word.split('').each_with_index do |char, idx|
       if letter == char
         player_word[idx] = letter
-      else
-        wrong_guesses << letter
-        self.guesses += 1
       end
     end
     player_word
