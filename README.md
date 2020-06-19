@@ -4,13 +4,13 @@ A project for the file I/O and serialisation section of The Odin Project in inte
 
 # Pseudocode
 
-* Load a dictionary
-* Select a random word between 5 and 12 letters
-* Close dictionary
+* Load a dictionary DONE
+* Select a random word between 5 and 12 letters DONE
+* Close dictionary DONE
 
-* Write welcome message plus instructions to console
-* Menu prompting user for new game or load game
-* if load import serialised game and resume
+* Write welcome message plus instructions to console PARTIAL DONE - needs a class
+* Menu prompting user for new game or load game DONE but not hooked up
+* if load import serialised game and resume TODO AT END
 * else
 
 * Main game loop

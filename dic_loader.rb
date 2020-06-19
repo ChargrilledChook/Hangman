@@ -9,12 +9,16 @@ class DictLoader
     @word = choose_word(dict).downcase
   end
 
+  def secret_word
+    word
+  end
+
   private
 
   def load_dict
     dict = []
     f = File.open('dictionary.txt', 'r')
-    while line = f.gets
+    while (line = f.gets)
       dict << line
     end
     f.close
@@ -23,11 +27,7 @@ class DictLoader
 
   def choose_word(dict)
     result = 'foo'
-    result = dict.sample while result.length < 5 || result.length > 12
+    result = dict.sample.chomp while result.length < 5 || result.length > 12
     result
   end
 end
-
-dictloader = DictLoader.new
-puts dictloader.dict.sample
-puts dictloader.word
