@@ -32,7 +32,12 @@ class Game
         wrong_guesses << guess
         self.guesses += 1
       end
-      puts round
+      if secret_word == progress.join('')
+        puts 'You guessed correctly!'
+        break
+      else
+        puts round
+      end
     end
   end
 
