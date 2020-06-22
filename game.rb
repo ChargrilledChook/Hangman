@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry'
 # general file until i make class decisions
 class Game
   attr_reader :dict
@@ -23,6 +22,7 @@ class Game
   end
 
   def game_loop
+    game_won = false
     until guesses == 6
       print player_prompt
       guess = player.get_input
@@ -33,11 +33,15 @@ class Game
         self.guesses += 1
       end
       if secret_word == progress.join('')
-        puts 'You guessed correctly!'
+        puts win_message
+        game_won = true
         break
       else
         puts round
       end
+    end
+    unless game_won == true 
+      puts loss_message
     end
   end
 
@@ -61,7 +65,6 @@ class Game
     puts game_intro
     puts secret_word
     puts round
-    
   end
 
   def welcome_string
@@ -104,6 +107,16 @@ class Game
     Enter your guess: )
   end
 
-  
+  def win_message
+    %(
+    You guessed correctly! The word was #{secret_word}. Well done!
+  )
+  end
+
+  def loss_message
+    %(
+    You didn't guess in time! Bad luck!
+    )
+  end
 end
 
