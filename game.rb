@@ -111,7 +111,7 @@ class Game
 
   def loss_message
     %(
-    You didn't guess in time! Bad luck!
+    You didn't guess in time! The word was #{secret_word}. Bad luck!
     )
   end
 end
