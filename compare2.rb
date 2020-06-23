@@ -1,7 +1,7 @@
+# frozen_string_literal: true
+
 def compare(letter, secret_word, guesses)
-  if secret_word.include?(letter)
-    guesses << letter
-  end
+  guesses << letter if secret_word.include?(letter)
 end
 
 def draw_word(secret_word, guesses)
@@ -28,8 +28,3 @@ compare('l', secret, guesses)
 draw_word(secret, guesses)
 
 puts guesses
-
-
-
-
-

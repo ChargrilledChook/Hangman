@@ -40,9 +40,7 @@ class Game
         puts round
       end
     end
-    unless game_won == true 
-      puts loss_message
-    end
+    puts loss_message unless game_won == true
   end
 
   def match?(guess)
@@ -51,9 +49,7 @@ class Game
 
   def compare(letter, secret_word, player_word)
     secret_word.split('').each_with_index do |char, idx|
-      if letter == char
-        player_word[idx] = letter
-      end
+      player_word[idx] = letter if letter == char
     end
     player_word
   end
@@ -119,4 +115,3 @@ class Game
     )
   end
 end
-

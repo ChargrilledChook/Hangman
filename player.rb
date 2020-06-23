@@ -2,7 +2,6 @@
 
 # Responsible for getting user input
 class Player
-
   def initialize(name = 'Player')
     @name = name
   end
@@ -11,5 +10,4 @@ class Player
     input = gets.chomp.downcase
     input
   end
-
 end
