@@ -8,7 +8,7 @@ class Player
   end
 
   def get_input
-    input = gets.chomp
+    input = gets.chomp.downcase
     input
   end
 
