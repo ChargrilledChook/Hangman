@@ -24,8 +24,7 @@ class Game
   def game_loop
     game_won = false
     until guesses == 6
-      print player_prompt
-      guess = player.get_input
+      guess = check_input
       if match?(guess)
         self.progress = compare(guess, secret_word, progress)
       else
@@ -52,6 +51,15 @@ class Game
       player_word[idx] = letter if letter == char
     end
     player_word
+  end
+
+  def check_input
+    guess = 'foo'
+    until guess.length == 1
+      print player_prompt
+      guess = player.get_input
+    end
+    guess
   end
 
   def intro
