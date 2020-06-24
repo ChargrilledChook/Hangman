@@ -18,6 +18,18 @@ class Game
     @wrong_guesses = []
   end
 
+  def intro
+    puts welcome_string
+    puts menu_text
+    puts rules_text
+    puts game_intro
+    puts secret_word
+    puts round
+    game_loop
+  end
+
+  private
+
   def round
     %(
       #{progress.join(' ')}   ||   #{guesses} incorrect guesses.   ||   Incorrect guesses: #{wrong_guesses.join(' ')}
@@ -63,14 +75,5 @@ class Game
       guess = player.get_input
     end
     guess
-  end
-
-  def intro
-    puts welcome_string
-    puts menu_text
-    puts rules_text
-    puts game_intro
-    puts secret_word
-    puts round
   end
 end
