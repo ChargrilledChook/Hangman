@@ -3,14 +3,13 @@
 # general file until i make class decisions
 class Game
   attr_reader :dict
-  attr_accessor :guesses, :guess_display, :progress, :wrong_guesses, :player, :secret_word
+  attr_accessor :guesses, :progress, :wrong_guesses, :player, :secret_word
 
   def initialize
     @dict = DictLoader.new
     @player = Player.new
     @secret_word = dict.secret_word
     @guesses = 0
-    @guess_display = ['.'] * 6
     @progress = secret_word.split('').map { '_' }
     @wrong_guesses = []
   end
