@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'text_content'
+require 'yaml'
 
 # general file until i make class decisions
 class Game
@@ -28,6 +29,13 @@ class Game
     game_loop
   end
 
+  def save
+    yaml = YAML::dump(self)
+    file = File.new('save.txt', 'w+')
+    file.puts(yaml)
+    file.close
+  end
+
   private
 
   def round
@@ -39,8 +47,10 @@ class Game
   def game_loop
     game_won = false
     until guesses == 6
-      guess = check_input
-      if match?(guess)
+      guess = check_input_length
+      if guess == '1'
+        save_manager(guess)
+      elsif match?(guess)
         self.progress = compare(guess, secret_word, progress)
       else
         wrong_guesses << guess
@@ -53,6 +63,7 @@ class Game
       else
         puts round
       end
+      save
     end
     puts loss_message unless game_won == true
   end
@@ -68,7 +79,11 @@ class Game
     player_word
   end
 
-  def check_input
+  def save_manager(option)
+    save if option.to_i == 1
+  end
+
+  def check_input_length
     guess = 'foo'
     until guess.length == 1
       print player_prompt
