@@ -11,12 +11,15 @@ class Game
   attr_accessor :guesses, :progress, :wrong_guesses, :player, :secret_word
 
   def initialize
-    @dict = DictLoader.new
     @player = Player.new
-    @secret_word = dict.secret_word
+    @secret_word = secret_word_get(DictLoader.new)
     @guesses = 0
     @progress = secret_word.split('').map { '_' }
     @wrong_guesses = []
+  end
+
+  def secret_word_get(dict)
+    dict.secret_word
   end
 
   def intro
@@ -63,7 +66,6 @@ class Game
       else
         puts round
       end
-      save
     end
     puts loss_message unless game_won == true
   end
