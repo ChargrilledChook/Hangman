@@ -45,12 +45,18 @@ module TextContent
   def win_message
     %(
     You guessed correctly! The word was #{secret_word}. Well done!
-  )
+    )
   end
 
   def loss_message
     %(
     You didn't guess in time! The word was #{secret_word}. Bad luck!
+    )
+  end
+
+  def save_message
+    %(
+    Your game has been saved. See you next time!
     )
   end
 end

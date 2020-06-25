@@ -37,6 +37,8 @@ class Game
     file = File.new('save.txt', 'w+')
     file.puts(yaml)
     file.close
+    puts save_message
+    exit
   end
 
   private
