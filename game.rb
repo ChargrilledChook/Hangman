@@ -33,7 +33,7 @@ class Game
   end
 
   def save
-    yaml = YAML.dump(self)
+    yaml = YAML::dump(self)
     file = File.new('save.txt', 'w+')
     file.puts(yaml)
     file.close
@@ -89,14 +89,10 @@ class Game
 
   def check_input_length
     guess = 'foo'
-    until guess.length == 1 && letter?(guess)
+    until guess.length == 1
       print player_prompt
       guess = player.get_input
     end
     guess
-  end
-
-  def letter?(guess)
-    guess =~ /[[:alpha:]]/
   end
 end
