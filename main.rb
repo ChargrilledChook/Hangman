@@ -4,7 +4,7 @@ require_relative 'dic_loader'
 require_relative 'game'
 require_relative 'player'
 
-puts 'Enter your selection 1 new game 2 load'
+print 'Enter your selection: 1 => New Game || 2 => Load Saved Game  '
 
 def get_input
   input = gets.chomp.downcase
