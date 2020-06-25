@@ -7,7 +7,6 @@ require 'yaml'
 class Game
   include TextContent
 
-  attr_reader :dict
   attr_accessor :guesses, :progress, :wrong_guesses, :player, :secret_word
 
   def initialize

@@ -59,4 +59,10 @@ module TextContent
     Your game has been saved. See you next time!
     )
   end
+
+  def new_game_message
+    %(
+    
+    )
+  end
 end
