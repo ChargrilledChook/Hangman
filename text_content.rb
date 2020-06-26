@@ -12,8 +12,7 @@ module TextContent
     Enter your selection:
 
     1. New game
-    2. Load game
-    3. Rules)
+    2. Load game)
   end
 
   def rules_text
@@ -22,10 +21,7 @@ module TextContent
     guesses and you lose. Your correct guesses will be shown on the left and
     your incorrect guesses on the right.
 
-    You can also attempt to guess the whole word at any time.
-
-    Enter 1 while playing to restart.
-    Enter 2 while playing to save and quit.
+    Enter 1 while playing to save and quit.
 
     Good luck!
   )
@@ -57,12 +53,6 @@ module TextContent
   def save_message
     %(
     Your game has been saved. See you next time!
-    )
-  end
-
-  def new_game_message
-    %(
-    
     )
   end
 end
