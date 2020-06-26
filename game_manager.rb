@@ -2,12 +2,14 @@
 
 require_relative 'text_content'
 require_relative 'player'
+require_relative 'save_manager'
 require 'yaml'
 
-# Responsible for type of game that is launched
+# Responsible for initializing and introducting game
 class GameManager
   include TextContent
   include Player
+  include SaveManager
 
   def intro
     puts welcome_string
@@ -25,19 +27,5 @@ class GameManager
       game = Game.new
     end
     game.begin_game
-  end
- 
-  def save_game(game)
-    yaml = YAML.dump(game)
-    file = File.new('save.txt', 'w+')
-    file.puts(yaml)
-    file.close
-    puts save_message
-    exit
-  end
-
-  def load_save
-    game = YAML.load(File.read('save.txt'))
-    game
   end
 end

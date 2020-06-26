@@ -2,12 +2,14 @@
 
 require_relative 'text_content'
 require_relative 'player'
+require_relative 'save_manager'
 require 'yaml'
 
 # Controls game loop and core data for a single match of hangman
 class Game
   include TextContent
   include Player
+  include SaveManager
 
   attr_reader :secret_word
   attr_accessor :guesses, :progress, :wrong_guesses
@@ -28,15 +30,6 @@ class Game
     puts secret_word
     puts round
     game_loop
-  end
-
-  def save
-    yaml = YAML.dump(self)
-    file = File.new('save.txt', 'w+')
-    file.puts(yaml)
-    file.close
-    puts save_message
-    exit
   end
 
   private
@@ -82,7 +75,7 @@ class Game
   end
 
   def save_manager(option)
-    save if option.to_i == 1
+    save_game(self) if option.to_i == 1
   end
 
   def check_input_length
