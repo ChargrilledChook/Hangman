@@ -55,4 +55,9 @@ module TextContent
     Your game has been saved. See you next time!
     )
   end
+
+  def empty_prompt
+    %(
+    => )
+  end
 end
