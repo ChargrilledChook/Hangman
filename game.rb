@@ -27,7 +27,6 @@ class Game
 
   def begin_game
     puts game_intro
-    puts secret_word
     puts round
     game_loop
   end

@@ -20,12 +20,14 @@ class GameManager
     game_start(choice)
   end
 
+  private
+
   def game_start(choice)
-    if choice == '2'
-      game = load_save
-    else
-      game = Game.new
-    end
+    game = if choice == '2'
+             load_save
+           else
+             Game.new
+           end
     game.begin_game
   end
 end
