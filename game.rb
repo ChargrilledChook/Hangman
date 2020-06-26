@@ -21,10 +21,7 @@ class Game
     dict.secret_word
   end
 
-  def intro
-    puts welcome_string
-    puts menu_text
-    puts rules_text
+  def begin_game
     puts game_intro
     puts secret_word
     puts round
@@ -32,7 +29,7 @@ class Game
   end
 
   def save
-    yaml = YAML::dump(self)
+    yaml = YAML.dump(self)
     file = File.new('save.txt', 'w+')
     file.puts(yaml)
     file.close
