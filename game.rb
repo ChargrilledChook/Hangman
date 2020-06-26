@@ -9,7 +9,8 @@ class Game
   include TextContent
   include Player
 
-  attr_accessor :guesses, :progress, :wrong_guesses, :player, :secret_word
+  attr_reader :secret_word
+  attr_accessor :guesses, :progress, :wrong_guesses
 
   def initialize
     @secret_word = secret_word_get(DictLoader.new)
