@@ -1,16 +1,17 @@
 # frozen_string_literal: true
 
 require_relative 'text_content'
+require_relative 'player'
 require 'yaml'
 
-# general file until i make class decisions
+# Controls game loop and core data for a single match of hangman
 class Game
   include TextContent
+  include Player
 
   attr_accessor :guesses, :progress, :wrong_guesses, :player, :secret_word
 
   def initialize
-    @player = Player.new
     @secret_word = secret_word_get(DictLoader.new)
     @guesses = 0
     @progress = secret_word.split('').map { '_' }
@@ -87,7 +88,7 @@ class Game
     guess = 'foo'
     until guess.length == 1
       print player_prompt
-      guess = player.get_input
+      guess = get_input
     end
     guess
   end

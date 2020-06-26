@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 require_relative 'text_content'
+require_relative 'player'
 require 'yaml'
 
 # Responsible for type of game that is launched
 class GameManager
   include TextContent
+  include Player
 
   def intro
     puts welcome_string
@@ -25,11 +27,6 @@ class GameManager
     game.begin_game
   end
  
-  def get_input
-    input = gets.chomp.downcase
-    input
-  end
-
   def save_game(game)
     yaml = YAML.dump(game)
     file = File.new('save.txt', 'w+')

@@ -2,7 +2,6 @@
 
 require_relative 'dic_loader'
 require_relative 'game'
-require_relative 'player'
 require_relative 'game_manager'
 
 console = GameManager.new
