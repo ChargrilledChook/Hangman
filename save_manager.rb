@@ -16,7 +16,6 @@ module SaveManager
   end
 
   def load_save
-    game = YAML.load(File.read(default_save))
-    game
+    YAML.load(File.read(default_save))
   end
 end
